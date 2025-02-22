@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR 追踪器数据可视化</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="close-button" id="closeBtn">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </div>
+        
+        <header>
+            <h1>VR 追踪器数据可视化</h1>
+            <div class="connection-status">
+                <div class="status-indicator" id="statusIndicator"></div>
+                <span id="statusText">正在连接...</span>
+            </div>
+            <div class="controls">
+                <button id="startBtn" class="btn">开始追踪</button>
+                <button id="stopBtn" class="btn">停止追踪</button>
+            </div>
+        </header>
+
+        <div class="data-container">
+            <div class="data-section position">
+                <h2>位置数据 (米)</h2>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <label>X 坐标</label>
+                        <span id="posX">0.0000</span>
+                    </div>
+                    <div class="data-item">
+                        <label>Y 坐标</label>
+                        <span id="posY">0.0000</span>
+                    </div>
+                    <div class="data-item">
+                        <label>Z 坐标</label>
+                        <span id="posZ">0.0000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-section rotation">
+                <h2>旋转数据 (度)</h2>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <label>Roll (翻滚)</label>
+                        <span id="rotRoll">0.0000</span>
+                    </div>
+                    <div class="data-item">
+                        <label>Pitch (俯仰)</label>
+                        <span id="rotPitch">0.0000</span>
+                    </div>
+                    <div class="data-item">
+                        <label>Yaw (偏航)</label>
+                        <span id="rotYaw">0.0000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="visualization">
+            <div class="cube-container">
+                <div class="cube" id="tracker-cube">
+                    <div class="face front">前</div>
+                    <div class="face back">后</div>
+                    <div class="face right">右</div>
+                    <div class="face left">左</div>
+                    <div class="face top">上</div>
+                    <div class="face bottom">下</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
